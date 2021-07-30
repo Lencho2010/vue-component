@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>具名插槽</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <style>
+        .template {
+            width: 400px;
+            height: 250px;
+            position: relative;
+        }
+
+        .color1 {
+            background-color: aquamarine;
+        }
+
+        .color2 {
+            background-color: burlywood;
+        }
+
+        .color3 {
+            background-color: darkcyan;
+        }
+
+        .chart-body {
+            text-align: center;
+            vertical-align: middle;
+            line-height: 250px;
+            font-size: 24px;
+        }
+
+        .chart-title {
+            text-align: center;
+            line-height: 16px;
+            font-size: 16px;
+            color: darkmagenta;
+        }
+
+        .menu-tool {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root">
+
+        <keep-alive>
+            <component :is='curName'></component>
+        </keep-alive>
+        <ul>
+            <li v-for="(val,index) of arr">
+                <component :is="val.name">
+                    <template #title>
+                        <div class="chart-title">{{val.title}}</div>
+                    </template>
+                    <template v-if="val.showMenu" v-slot:menu>
+                        <mymenu></mymenu>
+                    </template>
+
+                </component>
+            </li>
+        </ul>
+    </div>
+
+    <template id="home">
+        <div>
+            <p>首页</p>
+            <input type="checkbox">
+        </div>
+    </template>
+
+    <template id="column_1">
+        <div class="template color1">
+            <slot name='title'>
+                <!-- <div class="chart-title">我是标题</div> -->
+            </slot>
+            <slot name='menu'></slot>
+            <div class="chart-body">column_1</div>
+        </div>
+    </template>
+
+    <template id="column_2">
+        <div class="template color2">
+            <slot name='title'>
+                <!-- <div class="chart-title">我是标题</div> -->
+            </slot>
+            <slot name='menu'></slot>
+            <div class="chart-body">column_2</div>
+        </div>
+    </template>
+
+    <template id="column_3">
+        <div class="template color3">
+            <slot name='title'>
+                <!-- <div class="chart-title">我是标题</div> -->
+            </slot>
+            <slot name='menu'></slot>
+            <div class="chart-body">column_3</div>
+        </div>
+    </template>
+
+    <template id="mymenu">
+        <div class="menu-tool">
+            <a href="javascript:;">添加</a>
+            <a href="javascript:;">删除</a>
+            <a href="javascript:;">放大</a>
+            <a href="javascript:;">缩小</a>
+        </div>
+    </template>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false
+
+    // 注册全局工具栏组件
+    Vue.component("mymenu", {
+        template: "#mymenu"
+    })
+
+    Vue.component("home", {
+        template: '#home'
+    })
+
+    Vue.component("column_1", {
+        template: '#column_1'
+    })
+
+    Vue.component("column_2", {
+        template: '#column_2'
+    })
+
+    Vue.component("column_3", {
+        template: '#column_3'
+    })
+
+    const vueInstance = new Vue({
+        el: '#root',
+        data: {
+            arr: [{
+                name: 'column_1',
+                title: '我是标题1',
+                showMenu: true
+            }, {
+                name: 'column_2',
+                title: '我是标题2',
+                showMenu: false
+            }, {
+                name: 'column_3',
+                title: '我是标题3',
+                showMenu: true
+            }],
+            curName: 'home'
+        },
+        methods: {
+
+        }
+
+    })
+</script>
+
+</html>

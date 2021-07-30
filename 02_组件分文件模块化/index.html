@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分文件模块化</title>
+    <link rel="stylesheet" href="./css/index.css" />
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+
+        <keep-alive>
+            <component :is='curName'></component>
+        </keep-alive>
+        <div class="chart-container">
+            <div class="chart-component" v-for="(val,index) of arr">
+                <component :is="val.name">
+                    <template slot="title" slot-scope="comTitle">
+                        <!-- <div class="chart-title">{{val.title}}</div> -->
+                        <!-- <div class="chart-title">{{comTitle.title}}</div> -->
+                        <mytitle :title-data="comTitle.title"></mytitle>
+                    </template>
+                    <template v-if="val.showMenu" v-slot:menu>
+                        <mymenu></mymenu>
+                    </template>
+
+                </component>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ****************组件模板**************** -->
+    <template id="home">
+        <div>
+            <p>全国三次调查土地利用结构汇总统计</p>
+        </div>
+    </template>
+
+    <!-- 图表模板 -->
+    <template id="column_1">
+        <div class="template color1">
+            <slot name='title' v-bind:title="titleData">我是默认标题</slot>
+            <slot name='menu'></slot>
+            <div class="chart-body">{{chartContent}}</div>
+        </div>
+    </template>
+
+    <template id="column_2">
+        <div class="template color2">
+            <slot name='title' v-bind:title="titleData">我是默认标题</slot>
+            <slot name='menu'></slot>
+            <div class="chart-body">{{chartContent}}</div>
+        </div>
+    </template>
+
+    <template id="column_3">
+        <div class="template color3">
+            <slot name='title' v-bind:title="titleData">我是默认标题</slot>
+            <slot name='menu'></slot>
+            <div class="chart-body">{{chartContent}}</div>
+        </div>
+    </template>
+
+    <!-- 菜单模板 -->
+    <template id="mymenu">
+        <div class="menu-tool">
+            <a href="javascript:;">添加</a>
+            <a href="javascript:;">删除</a>
+            <a href="javascript:;">放大</a>
+            <a href="javascript:;">缩小</a>
+        </div>
+    </template>
+
+    <!-- 标题模板 -->
+    <template id="mytitle">
+        <div @click="titleClick" class="chart-title" :class="[{'chart-title-checked':isChecked},{'chart-title-click':isCanClick}]">{{titleName}}</div>
+    </template>
+
+    <!-- <script type="module" src="./js/main.js"></script> -->
+    <script type="module" >
+        import start from './js/main.js'
+        start()
+    </script>
+</body>
+</html>

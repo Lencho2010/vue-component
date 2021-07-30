@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作用域插槽+props数据传递</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <style>
+        .chart-container {
+            display: flex;
+        }
+
+        .chart-component {
+            margin: 0 5px;
+        }
+
+        .template {
+            width: 450px;
+            height: 250px;
+            position: relative;
+        }
+
+        .color1 {
+            background-color: aquamarine;
+        }
+
+        .color2 {
+            background-color: burlywood;
+        }
+
+        .color3 {
+            background-color: darkcyan;
+        }
+
+        .chart-body {
+            text-align: center;
+            vertical-align: middle;
+            line-height: 250px;
+            font-size: 24px;
+        }
+
+        .chart-title {
+            text-align: center;
+            line-height: 16px;
+            font-size: 16px;
+            color: darkmagenta;
+            cursor: pointer;
+        }
+
+        .menu-tool {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+    1.什么是作用域插槽
+    作用域插槽就是带数据的插槽, 就是让父组件在填充子组件插槽内容时也能使用子组件的数据 
+    
+    标题由父组件通过插槽动态插入，但是标题内容由子组件提供，需要子组件把标题内容传递给父组件进行渲染
+    -->
+
+    <div id="root">
+
+        <keep-alive>
+            <component :is='curName'></component>
+        </keep-alive>
+        <div class="chart-container">
+            <div class="chart-component" v-for="(val,index) of arr">
+                <component :is="val.name">
+                    <template slot="title" slot-scope="comTitle">
+                        <!-- <div class="chart-title">{{val.title}}</div> -->
+                        <!-- <div class="chart-title">{{comTitle.title}}</div> -->
+                        <mytitle :titlename="comTitle.title"></mytitle>
+                    </template>
+                    <template v-if="val.showMenu" v-slot:menu>
+                        <mymenu></mymenu>
+                    </template>
+
+                </component>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ****************组件模板**************** -->
+    <template id="home">
+        <div>
+            <p>全国三次调查土地利用结构汇总统计</p>
+        </div>
+    </template>
+
+    <!-- 图表模板 -->
+    <template id="column_1">
+        <div class="template color1">
+            <slot name='title' v-bind:title="chartTitle">我是默认标题</slot>
+            <slot name='menu'></slot>
+            <div class="chart-body">column_1</div>
+        </div>
+    </template>
+
+    <template id="column_2">
+        <div class="template color2">
+            <slot name='title' v-bind:title="chartTitle">我是默认标题</slot>
+            <slot name='menu'></slot>
+            <div class="chart-body">column_2</div>
+        </div>
+    </template>
+
+    <template id="column_3">
+        <div class="template color3">
+            <slot name='title' v-bind:title="chartTitle">我是默认标题</slot>
+            <slot name='menu'></slot>
+            <div class="chart-body">column_3</div>
+        </div>
+    </template>
+
+    <!-- 菜单模板 -->
+    <template id="mymenu">
+        <div class="menu-tool">
+            <a href="javascript:;">添加</a>
+            <a href="javascript:;">删除</a>
+            <a href="javascript:;">放大</a>
+            <a href="javascript:;">缩小</a>
+        </div>
+    </template>
+
+    <!-- 标题模板 -->
+    <template id="mytitle">
+        <div @click="titleClick" class="chart-title">{{titlename}}</div>
+    </template>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false
+
+    Vue.component("mytitle", {
+        template: "#mytitle",
+        data() {
+            return {
+                // titleName: '默认组件标题'
+            }
+        },
+        props: ["titlename"],
+        methods: {
+            titleClick() {
+                console.log(this.titlename + "被点击了");
+            }
+        }
+    })
+
+    // 注册全局工具栏组件
+    Vue.component("mymenu", {
+        template: "#mymenu"
+    })
+
+    Vue.component("home", {
+        template: '#home'
+    })
+
+    Vue.component("column_1", {
+        template: '#column_1',
+        data() {
+            return {
+                chartTitle: "我是column_1标题"
+            }
+        }
+    })
+
+    Vue.component("column_2", {
+        template: '#column_2',
+        data() {
+            return {
+                chartTitle: "我是column_2标题"
+            }
+        }
+    })
+
+    Vue.component("column_3", {
+        template: '#column_3',
+        data() {
+            return {
+                chartTitle: "我是column_3标题"
+            }
+        }
+    })
+
+    const vueInstance = new Vue({
+        el: '#root',
+        data: {
+            arr: [{
+                name: 'column_1',
+                showMenu: true
+            }, {
+                name: 'column_2',
+                showMenu: false
+            }, {
+                name: 'column_3',
+                showMenu: true
+            }],
+            curName: 'home'
+        },
+        methods: {
+
+        }
+
+    })
+</script>
+
+</html>

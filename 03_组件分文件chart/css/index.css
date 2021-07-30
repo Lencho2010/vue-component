@@ -1,0 +1,58 @@
+body{
+    height: 1000px;
+    overflow: hidden;
+}
+
+.chart-container {
+    display: flex;
+}
+
+.chart-component {
+    margin: 0 5px;
+}
+
+.template {
+    width: 450px;
+    height: 250px;
+    position: relative;
+}
+
+.color1 {
+    background-color: rgb(6, 135, 158);
+}
+
+.color2 {
+    background-color: burlywood;
+}
+
+.color3 {
+    background-color: darkcyan;
+}
+
+.chart-body {
+    text-align: center;
+    vertical-align: middle;
+    line-height: 250px;
+    font-size: 24px;
+}
+
+.chart-title {
+    text-align: center;
+    line-height: 20px;
+    font-size: 18px;
+    color: rgb(1, 211, 18);
+}
+
+.chart-title-click{
+    cursor: pointer;
+}
+
+.chart-title-checked {
+    color: orange
+}
+
+.menu-tool {
+    position: absolute;
+    top: 0;
+    right: 0;
+}

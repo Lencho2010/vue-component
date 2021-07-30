@@ -1,0 +1,61 @@
+.topBarContainer {
+  height: 70px;
+  position: relative;
+}
+
+.fullTitle {
+  display: flex;
+  justify-content: center;
+}
+
+.titleContent {
+  text-align: center;
+  font-size: 30px;
+  color: #83f6df;
+  line-height: 70px;
+  margin: 0 10px;
+}
+
+.before-bg {
+  margin-top: 22px;
+  width: 456px;
+  height: 29px;
+  background: url(../layoutImages/顶部装饰左.png) no-repeat center center;
+}
+
+.after-bg {
+  margin-top: 22px;
+  margin-left: -18px;
+  width: 456px;
+  height: 29px;
+  background: url(../layoutImages/顶部装饰右.png) no-repeat center center;
+}
+
+.menuBarContainer{
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.clear{
+  margin:3px 10px 0 0;
+}
+
+.menuItem {
+  border: 1px solid #fff;
+  border-radius: 10px;
+  padding: 2px 5px;
+  margin-right: 3px;
+}
+
+.menuItem span {
+  font-size: 14px;
+  line-height: 18px;
+  color: azure;
+}
+
+.menuItemClose {
+  margin-top: 3px;
+  width: 10px;
+  height: 10px;
+}

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分文件模块化</title>
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/public.css" />
+    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="./css/myChart.css" />
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body class="w-full h-full mx0 my0 bg-transparent"
+    style="width: 1920px!important; background-color: rgb(0, 97, 48)!important">
+    <div class="bodyContainer w-full h-full mx0 my0">
+        <div id="root">
+            <!-- top栏 标题+左右侧菜单 -->
+            <top-bar :title="fullTitle"></top-bar>
+
+            <div class="chart-container">
+                <div class="chart-component" v-for="(val,index) of arr">
+                    <component :is="val.name">
+                        <template slot="title" slot-scope="comTitle">
+                            <!-- <div class="chart-title">{{val.title}}</div> -->
+                            <!-- <div class="chart-title">{{comTitle.title}}</div> -->
+                            <mytitle :title-data="comTitle.title"></mytitle>
+                        </template>
+                        <template v-if="val.showMenu" v-slot:menu>
+                            <mymenu></mymenu>
+                        </template>
+
+                    </component>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- ****************组件模板**************** -->
+    <template id="topBar">
+        <div class="topBarContainer">
+            <menu-bar></menu-bar>
+            <div class="fullTitle">
+                <div class="before-bg"></div>
+                <div class="titleContent">{{title}}</div>
+                <div class="after-bg"></div>
+            </div>
+        </div>
+    </template>
+
+    <!-- 驾驶舱左侧工具栏 -->
+    <template id="menuBar">
+        <div id="menuBar" style="display: flex; z-index: 99999;" class="menuBarContainer">
+            <a href="javascript:;" @click="clear" class="clear">
+                <img class="w18 h18" src="./images/Reload.png" alt="clear">
+            </a>
+            <div id="menu">
+                <div class="menuList lencho-scroll-bar flex">
+                    <p v-for="(item,index) in itemList" v-bind:title="item.itemName" :key="item.id" class="menuItem">
+                        <span>{{ item.itemName }}</span>
+                        <a style="margin-left: 5px;" href="javascript:;" @click="removeAt(index)">
+                            <img class="menuItemClose" src="./images/Close-WF.png" alt="">
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- 图表模板 -->
+    <template id="column_1">
+        <div class="template color1">
+            <slot name='title' v-bind:title="titleData">我是默认标题</slot>
+            <slot name='menu'></slot>
+            <div class="chart-body">{{chartContent}}</div>
+        </div>
+    </template>
+
+    <template id="column_2">
+        <div class="template color2">
+            <slot name='title' v-bind:title="titleData">我是默认标题</slot>
+            <slot name='menu'></slot>
+            <div class="chart-body">{{chartContent}}</div>
+        </div>
+    </template>
+
+    <template id="column_3">
+        <div class="template color3">
+            <slot name='title' v-bind:title="titleData">我是默认标题</slot>
+            <slot name='menu'></slot>
+            <div class="chart-body">{{chartContent}}</div>
+        </div>
+    </template>
+
+    <!-- 菜单模板 -->
+    <template id="mymenu">
+        <div class="menu-tool">
+            <a href="javascript:;">添加</a>
+            <a href="javascript:;">删除</a>
+            <a href="javascript:;">放大</a>
+            <a href="javascript:;">缩小</a>
+        </div>
+    </template>
+
+    <!-- 标题模板 -->
+    <template id="mytitle">
+        <div @click="titleClick" class="chart-title"
+            :class="[{'chart-title-checked':isChecked},{'chart-title-click':isCanClick}]">{{titleName}}</div>
+    </template>
+
+    <!-- <script type="module" src="./js/main.js"></script> -->
+    <script type="module">
+        import start from './js/main.js'
+        start()
+    </script>
+</body>
+
+</html>

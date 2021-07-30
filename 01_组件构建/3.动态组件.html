@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <style>
+        .template {
+            width: 150px;
+            height: 150px;
+        }
+
+        .color1 {
+            background-color: aquamarine;
+        }
+
+        .color2 {
+            background-color: burlywood;
+        }
+
+        .color3{
+            background-color: darkcyan;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root">
+
+        <keep-alive>
+            <component :is='curName'></component>
+        </keep-alive>
+        <ul>
+            <li v-for="(val,index) of arr">
+                <component :is="val.name"></component>
+            </li>
+        </ul>
+    </div>
+
+    <template id="home">
+        <div>
+            <p>首页</p>
+            <input type="checkbox">
+        </div>
+    </template>
+
+    <template id="column_1">
+        <div class="template color1">
+            <p>column_1</p>
+        </div>
+    </template>
+
+    <template id="column_2">
+        <div class="template color2">
+            <p>column_2</p>
+        </div>
+    </template>
+
+    <template id="column_3">
+        <div class="template color3">
+            <p>column_3</p>
+        </div>
+    </template>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false
+
+    Vue.component("home", {
+        template: '#home'
+    })
+
+    Vue.component("column_1", {
+        template: '#column_1'
+    })
+
+    Vue.component("column_2", {
+        template: '#column_2'
+    })
+
+    Vue.component("column_3", {
+        template: '#column_3'
+    })
+
+    const vueInstance = new Vue({
+        el: '#root',
+        data: {
+            arr: [{
+                name: 'column_1'
+            }, {
+                name: 'column_2'
+            }, {
+                name: 'column_3'
+            }],
+            curName: 'home'
+        },
+        methods: {
+
+        }
+
+    })
+</script>
+
+</html>
