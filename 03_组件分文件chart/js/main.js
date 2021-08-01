@@ -18,13 +18,15 @@ const option = {
     el: '#root',
     store: vueStore,
     beforeCreate() {
-		Vue.prototype.$bus = this //安装全局事件总线
-	},
+        Vue.prototype.$bus = this //安装全局事件总线
+    },
     mounted() {
         this.initData()
     },
     data: {
-        arr: [],
+        leftData: [],
+        rightData: [],
+        centerData: [],
         fullTitle: "全国土地利用结构汇总统计"
     },
     methods: {
@@ -34,12 +36,12 @@ const option = {
 
         async initData() {
             const { data: ret } = await this.getDataFromServer()
-            this.arr = ret
-            console.log(this.arr);
+            this.leftData = ret.filter(d=>d.region==='left')
+            this.rightData = ret.filter(d=>d.region==='right')
+            this.centerData = ret.filter(d=>d.region==='center')
         }
     }
 }
-
 
 
 export default function () {

@@ -18,24 +18,56 @@
 </head>
 
 <body class="w-full h-full mx0 my0 bg-transparent"
-    style="width: 1920px!important; background-color: rgb(0, 97, 48)!important">
+    style="width: 1920px!important; height: 1080px!important; background-color: rgb(0, 97, 48)!important">
     <div class="bodyContainer w-full h-full mx0 my0">
-        <div id="root">
+        <div id="root" class="h-full">
             <!-- top栏 标题+左右侧菜单 -->
             <top-bar :title="fullTitle"></top-bar>
 
             <div class="chart-container">
-                <div class="chart-component" v-for="(val,index) of arr">
-                    <component :chart-key="val.key" ref="child" :is="val.name">
-                        <template slot="title" slot-scope="comTitle">
-                            <!-- <div class="chart-title">{{val.title}}</div> -->
-                            <!-- <div class="chart-title">{{comTitle.title}}</div> -->
-                            <mytitle :title-tag="val.title" :title-data="comTitle.title"></mytitle>
-                        </template>
-                        <template v-if="val.showMenu" v-slot:menu>
-                            <mymenu></mymenu>
-                        </template>
-                    </component>
+                <div class="chart-child chart-left" style="background-color: coral;">
+                    <div class="chart-component" style="width: 500px!important;" v-for="(val,index) of leftData">
+                        <component :chart-key="val.key" ref="child" :is="val.name">
+                            <template slot="title" slot-scope="comTitle">
+                                <!-- <div class="chart-title">{{val.title}}</div> -->
+                                <!-- <div class="chart-title">{{comTitle.title}}</div> -->
+                                <mytitle :title-tag="val.title" :title-data="comTitle.title"></mytitle>
+                            </template>
+                            <template v-if="val.showMenu" v-slot:menu>
+                                <mymenu></mymenu>
+                            </template>
+                        </component>
+                    </div>
+                </div>
+
+                <div class="chart-child chart-center" style="background-color: aqua;">
+                    <div class="chart-component w-full" style="width: 900px!important;" v-for="(val,index) of centerData">
+                        <component :chart-key="val.key" ref="child" :is="val.name">
+                            <template slot="title" slot-scope="comTitle">
+                                <!-- <div class="chart-title">{{val.title}}</div> -->
+                                <!-- <div class="chart-title">{{comTitle.title}}</div> -->
+                                <mytitle :title-tag="val.title" :title-data="comTitle.title"></mytitle>
+                            </template>
+                            <template v-if="val.showMenu" v-slot:menu>
+                                <mymenu></mymenu>
+                            </template>
+                        </component>
+                    </div>
+                </div>
+                
+                <div class="chart-child chart-right" style="background-color: cadetblue;">
+                    <div class="chart-component" style="width: 500px!important;" v-for="(val,index) of rightData">
+                        <component :chart-key="val.key" ref="child" :is="val.name">
+                            <template slot="title" slot-scope="comTitle">
+                                <!-- <div class="chart-title">{{val.title}}</div> -->
+                                <!-- <div class="chart-title">{{comTitle.title}}</div> -->
+                                <mytitle :title-tag="val.title" :title-data="comTitle.title"></mytitle>
+                            </template>
+                            <template v-if="val.showMenu" v-slot:menu>
+                                <mymenu></mymenu>
+                            </template>
+                        </component>
+                    </div>
                 </div>
             </div>
         </div>

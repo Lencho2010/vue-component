@@ -4,15 +4,30 @@ body{
 }
 
 .chart-container {
+    height: calc(100% - 70px);
     display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.chart-left{
+    display: flex;
+    flex-direction: column-reverse
+}
+
+.chart-right{
+    display: flex;
+    flex-direction: column;
+    
 }
 
 .chart-component {
-    margin: 0 5px;
+    margin: 5px 5px;
 }
 
 .template {
-    width: 450px;
+    /* width: 450px; */
+    width: 100%;
     height: 250px;
     position: relative;
 }

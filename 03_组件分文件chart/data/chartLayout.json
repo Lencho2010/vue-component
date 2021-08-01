@@ -1,33 +1,66 @@
 [{
-    "key":"种植园用地区域分布",
-    "name": "column_1",
-    "showMenu": true,
-    "title": {
-        "isChecked": true,
-        "isCanClick": true
+        "region": "left",
+        "key": "种植园用地区域分布",
+        "name": "column_1",
+        "showMenu": true,
+        "title": {
+            "isChecked": true,
+            "isCanClick": true
+        }
+    }, {
+        "region": "left",
+        "key": "耕地区域分布",
+        "name": "column_2",
+        "showMenu": false,
+        "title": {
+            "isChecked": false,
+            "isCanClick": true
+        }
+    }, {
+        "region": "left",
+        "key": "草地区域分布",
+        "name": "column_3",
+        "showMenu": true,
+        "title": {
+            "isChecked": false,
+            "isCanClick": false
+        }
+    }, {
+        "region": "right",
+        "key": "耕地区域分布",
+        "name": "column_2",
+        "showMenu": false,
+        "title": {
+            "isChecked": false,
+            "isCanClick": true
+        }
+    }, {
+        "region": "right",
+        "key": "林地区域分布",
+        "name": "column_1",
+        "showMenu": true,
+        "title": {
+            "isChecked": true,
+            "isCanClick": false
+        }
+    }, {
+        "region": "right",
+        "key": "草地区域分布",
+        "name": "column_3",
+        "showMenu": true,
+        "title": {
+            "isChecked": false,
+            "isCanClick": false
+        }
+    },
+    {
+        "region": "center",
+        "key": "林地区域分布",
+        "name": "column_1",
+        "showMenu": true,
+        "title": {
+            "isChecked": true,
+            "isCanClick": false
+        }
     }
-}, {
-    "key":"耕地区域分布",
-    "name": "column_2",
-    "showMenu": false,
-    "title": {
-        "isChecked": false,
-        "isCanClick": true
-    }
-}, {
-    "key":"林地区域分布",
-    "name": "column_1",
-    "showMenu": true,
-    "title": {
-        "isChecked": true,
-        "isCanClick": false
-    }
-}, {
-    "key":"草地区域分布",
-    "name": "column_3",
-    "showMenu": true,
-    "title": {
-        "isChecked": false,
-        "isCanClick": false
-    }
-}]
+]
