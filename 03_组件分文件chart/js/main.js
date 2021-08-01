@@ -1,9 +1,11 @@
+import initChartTitle from './initChartTitle.js';
 import initComm from './initComponent.js'
 import initTopBar from './initTopBar.js'
 import initMenuBar from './initMenuBar.js'
 import vueStore from './initVuex.js'
 import initColumn_1 from './chart/column_1.js'
 
+initChartTitle()
 initColumn_1()
 
 initMenuBar()

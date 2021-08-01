@@ -4,6 +4,9 @@ export default function () {
     Vue.component("column_1", {
         template: '#column_1',
         mounted() {
+            this.$bus.$on('hello',data=>{
+                console.log('我是column_1组件，收到了数据：',data)
+            })
             this.gainData()
         },
         data() {
