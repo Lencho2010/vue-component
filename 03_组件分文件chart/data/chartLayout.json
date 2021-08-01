@@ -1,0 +1,10 @@
+[{
+    "name": "column_1",
+    "showMenu": true
+}, {
+    "name": "column_2",
+    "showMenu": false
+}, {
+    "name": "column_3",
+    "showMenu": true
+}]
