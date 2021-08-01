@@ -13,7 +13,11 @@ export default function () {
         },
         props: ["title"],
         methods: {
-            ...Vuex.mapActions({removeAt:'removeItemAt',clear:'clearItems'}),
+            ...Vuex.mapActions({removeAt:'removeItemAt',clearItems:'clearItems'}),
+            clear(){
+                this.clearItems()
+                this.$bus.$emit('hello','lencho')
+            }
         }
     })
 }

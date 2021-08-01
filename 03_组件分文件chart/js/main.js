@@ -15,6 +15,9 @@ axios.defaults.baseURL = 'http://127.0.0.1:5500/03_%E7%BB%84%E4%BB%B6%E5%88%86%E
 const option = {
     el: '#root',
     store: vueStore,
+    beforeCreate() {
+		Vue.prototype.$bus = this //安装全局事件总线
+	},
     mounted() {
         this.initData()
     },

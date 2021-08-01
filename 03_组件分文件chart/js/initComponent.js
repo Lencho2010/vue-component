@@ -29,6 +29,11 @@ export default function () {
 
     Vue.component("column_2", {
         template: '#column_2',
+        mounted() {
+            this.$bus.$on('hello',data=>{
+                console.log('我是column_2组件，收到了数据：',data)
+            })
+        },
         data() {
             return {
                 chartKey:'',
@@ -43,6 +48,11 @@ export default function () {
 
     Vue.component("column_3", {
         template: '#column_3',
+        mounted() {
+            this.$bus.$on('hello',data=>{
+                console.log('我是column_3组件，收到了数据：',data)
+            })
+        },
         data() {
             return {
                 chartKey:'',
