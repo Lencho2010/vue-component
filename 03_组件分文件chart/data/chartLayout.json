@@ -1,4 +1,5 @@
 [{
+    "key":"种植园用地区域分布",
     "name": "column_1",
     "showMenu": true,
     "title": {
@@ -6,6 +7,7 @@
         "isCanClick": true
     }
 }, {
+    "key":"耕地区域分布",
     "name": "column_2",
     "showMenu": false,
     "title": {
@@ -13,14 +15,16 @@
         "isCanClick": true
     }
 }, {
-    "name": "column_3",
+    "key":"林地区域分布",
+    "name": "column_1",
     "showMenu": true,
     "title": {
         "isChecked": true,
         "isCanClick": false
     }
 }, {
-    "name": "column_2",
+    "key":"草地区域分布",
+    "name": "column_3",
     "showMenu": true,
     "title": {
         "isChecked": false,

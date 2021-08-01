@@ -2,6 +2,9 @@ import initComm from './initComponent.js'
 import initTopBar from './initTopBar.js'
 import initMenuBar from './initMenuBar.js'
 import vueStore from './initVuex.js'
+import initColumn_1 from './chart/column_1.js'
+
+initColumn_1()
 
 initMenuBar()
 initComm()
@@ -16,16 +19,6 @@ const option = {
         this.initData()
     },
     data: {
-        // arr: [{
-        //     name: 'column_1',
-        //     showMenu: true
-        // }, {
-        //     name: 'column_2',
-        //     showMenu: false
-        // }, {
-        //     name: 'column_3',
-        //     showMenu: true
-        // }],
         arr: [],
         fullTitle: "全国土地利用结构汇总统计"
     },
@@ -37,6 +30,7 @@ const option = {
         async initData() {
             const { data: ret } = await this.getDataFromServer()
             this.arr = ret
+            console.log(this.arr);
         }
     }
 }
