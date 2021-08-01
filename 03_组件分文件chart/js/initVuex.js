@@ -2,9 +2,16 @@ const storeOption = {
     state: {
         count: 0
     },
+    actions: {
+        addAct(context, val) {
+            console.log('addAct');
+            context.commit('addMut', val)
+        }
+    },
     mutations: {
-        increment(state) {
-            state.count++
+        addMut(state, val) {
+            console.log('addMut');
+            state.count += val
         }
     }
 }
