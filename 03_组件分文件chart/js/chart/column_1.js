@@ -16,6 +16,9 @@ export default function () {
             }
         },
         props: ["chartKey"],
+        computed:{
+
+        },
         methods: {
             // 异步从后台获取数据
             gainDataFromServer() {
@@ -24,7 +27,6 @@ export default function () {
             async gainData() {
                 //通过布局数据中传递过来的key值作为参数从后台请求对应数据
                 console.log(this.chartKey);
-                console.log(this.$store);
                 const { data: retData } = await this.gainDataFromServer()
                 this.titleData.text = retData.title
                 initChart(this)
