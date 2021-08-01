@@ -16,7 +16,7 @@ export default function () {
             ...Vuex.mapActions({removeAt:'removeItemAt',clearItems:'clearItems'}),
             clear(){
                 this.clearItems()
-                this.$bus.$emit('hello','lencho')
+                //this.$bus.$emit('hello','lencho')
             }
         }
     })

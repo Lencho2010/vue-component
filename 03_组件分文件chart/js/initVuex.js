@@ -35,6 +35,7 @@ const storeOption = {
         clearItems(context, val) {
             console.log('clearItems');
             context.commit('clearItems', val)
+            Vue.prototype.$bus.$emit('hello','lencho')
         }
     },
     mutations: {
