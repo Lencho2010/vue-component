@@ -1,20 +1,20 @@
-import initChart from './column_1_chart.js'
+import initChart from './pie_1_chart.js'
 
 export default function () {
-    Vue.component("column_1", {
-        template: '#column_1',
+    Vue.component("pie_1", {
+        template: '#pie_1',
         mounted() {
             this.$bus.$on('hello',data=>{
-                console.log('我是column_1组件，收到了数据：',data)
+                console.log('我是pie_1组件，收到了数据：',data)
             })
             this.gainData()
         },
         data() {
             return {
-                chartTitle: "我是column_1标题",
+                chartTitle: "我是pie_1标题",
                 chartContent: "",
                 titleData: {
-                    text: '种植园用地123'
+                    text: '种植园用地23'
                 }
             }
         },
@@ -25,7 +25,7 @@ export default function () {
         methods: {
             // 异步从后台获取数据
             gainDataFromServer() {
-                return axios.get('/data/column_1.json')
+                return axios.get('/data/pie_1.json')
             },
             async gainData() {
                 //通过布局数据中传递过来的key值作为参数从后台请求对应数据

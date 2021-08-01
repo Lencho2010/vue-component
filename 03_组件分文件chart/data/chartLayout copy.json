@@ -43,6 +43,15 @@
             "isChecked": true,
             "isCanClick": false
         }
+    }, {
+        "region": "right",
+        "key": "草地区域分布",
+        "name": "column_3",
+        "showMenu": true,
+        "title": {
+            "isChecked": false,
+            "isCanClick": false
+        }
     },
     {
         "region": "center",

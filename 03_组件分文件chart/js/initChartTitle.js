@@ -3,7 +3,7 @@ export default function () {
         template: "#mytitle",
         data() {
             return {
-                titleName: this.titleData.text,
+                // titleName: this.titleData.text,
                 isCanClick: this.titleTag.isCanClick,
                 isChecked: this.titleTag.isChecked
             }
@@ -13,9 +13,11 @@ export default function () {
             titleClick() {
                 if (!this.isCanClick) return
                 console.log(this.titleData);
-                this.isChecked = !this.isChecked
-                //console.log(this.titleTag);
+                this.titleTag.isChecked = this.isChecked = !this.isChecked
             }
+        },
+        computed: {
+            
         }
     })
 }
