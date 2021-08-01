@@ -1,10 +1,29 @@
 [{
     "name": "column_1",
-    "showMenu": true
+    "showMenu": true,
+    "title": {
+        "isChecked": true,
+        "isCanClick": true
+    }
 }, {
     "name": "column_2",
-    "showMenu": false
+    "showMenu": false,
+    "title": {
+        "isChecked": false,
+        "isCanClick": true
+    }
 }, {
     "name": "column_3",
-    "showMenu": true
+    "showMenu": true,
+    "title": {
+        "isChecked": true,
+        "isCanClick": false
+    }
+}, {
+    "name": "column_2",
+    "showMenu": true,
+    "title": {
+        "isChecked": false,
+        "isCanClick": false
+    }
 }]

@@ -29,7 +29,7 @@
                         <template slot="title" slot-scope="comTitle">
                             <!-- <div class="chart-title">{{val.title}}</div> -->
                             <!-- <div class="chart-title">{{comTitle.title}}</div> -->
-                            <mytitle :title-data="comTitle.title"></mytitle>
+                            <mytitle :title-tag="val.title" :title-data="comTitle.title"></mytitle>
                         </template>
                         <template v-if="val.showMenu" v-slot:menu>
                             <mymenu></mymenu>

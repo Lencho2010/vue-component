@@ -1,4 +1,4 @@
-export default function(){
+export default function () {
 
     Vue.config.productionTip = false
 
@@ -7,16 +7,17 @@ export default function(){
         data() {
             return {
                 titleName: this.titleData.text,
-                isCanClick: this.titleData.isCanClick,
-                isChecked: this.titleData.isChecked
+                isCanClick: this.titleTag.isCanClick,
+                isChecked: this.titleTag.isChecked
             }
         },
-        props: ["titleData"],
+        props: ["titleData","titleTag"],
         methods: {
             titleClick() {
                 if (!this.isCanClick) return
                 console.log(this.titleData);
                 this.isChecked = !this.isChecked
+                //console.log(this.titleTag);
             }
         }
     })
@@ -37,9 +38,7 @@ export default function(){
                 chartTitle: "我是column_1标题",
                 chartContent: "",
                 titleData: {
-                    text: '种植园用地',
-                    isChecked: false,
-                    isCanClick: true
+                    text: '种植园用地'
                 }
             }
         },
@@ -67,9 +66,7 @@ export default function(){
                 chartTitle: "我是column_2标题",
                 chartContent: "我是饼状图",
                 titleData: {
-                    text: '耕地',
-                    isChecked: false,
-                    isCanClick: false
+                    text: '耕地'
                 }
             }
         }
@@ -82,9 +79,7 @@ export default function(){
                 chartTitle: "我是column_3标题",
                 chartContent: "我是桑基图",
                 titleData: {
-                    text: '草地',
-                    isChecked: true,
-                    isCanClick: true
+                    text: '草地'
                 }
             }
         }
